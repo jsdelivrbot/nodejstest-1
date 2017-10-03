@@ -8,7 +8,7 @@ var users = [];//{
 var Len=0;
 
 // Start a TCP Server
-net.createServer(function (socket) {
+var srvr=net.createServer(function (socket) {
 
   // Identify this client
   socket.name = socket.remoteAddress + ":" + socket.remotePort 
@@ -142,7 +142,11 @@ net.createServer(function (socket) {
     process.stdout.write(message)
   }
 
-}).listen(8080);
-
+});
+srvr.listen(8080);
+srvr.listen(() => {
+  console.log('opened server on', srvr.address());
+});
 // Put a friendly message on the terminal of the server.
 console.log("Chat server running at port 8080\n");
+console.log(" ip: "+srvr.address());
