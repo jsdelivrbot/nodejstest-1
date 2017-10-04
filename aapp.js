@@ -6,6 +6,7 @@ var users = [];//{
     //'ss':'aaa'
 //};
 var Len=0;
+var prnsrv=0;
 
 // Start a TCP Server
 var srvr=net.createServer(function (socket) {
@@ -144,9 +145,14 @@ var srvr=net.createServer(function (socket) {
 
 });
 srvr.listen(8080);
+srvr.on('listening',function (){
+  console.log('opened server on', srvr.address());
+    
+});
+/*
 srvr.listen(() => {
   console.log('opened server on', srvr.address());
 });
+*/
 // Put a friendly message on the terminal of the server.
 console.log("Chat server running at port 8080\n");
-console.log(" ip: "+srvr.address());
